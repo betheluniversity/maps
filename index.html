@@ -12,5 +12,29 @@
     <iframe border="0" frameBorder="0" height="100%" id="map_frame" scrolling="no" src="https://map.concept3d.com/?id=757" style="border:0px solid #fff; margin:0; padding:0;" width="100%">
       <p>Your browser does not support iframes.</p>
     </iframe>
+    <script type="text/javascript">
+        function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++)
+            {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam)
+                {
+                    return sParameterName[1];
+                }
+            }
+        }
+        if (window.location.search) {
+            // var id = getUrlParameter('id');
+            var map_frame = document.getElementById('map_frame');
+            var mrkIid = getUrlParameter('mrkIid');
+            var build_parameter = "?&mrkIid="+mrkIid;
+            //append url parameter to iframe
+            var src = 'https://www.myatlascms.com/map/';
+                src += window.location.search + window.location.hash;
+                document.getElementById("map_frame").src = src;
+        }
+    </script>
   </body>
 </html>
